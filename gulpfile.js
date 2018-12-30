@@ -167,22 +167,3 @@ gulp.task('default', ['styles', 'scripts-individual', 'scripts-combined']);
 gulp.task('serve-bs', ['live'], function() {
 	browserSync.init(config.browserSync)
 });
-
-//start livereload
-gulp.task('serve-lr', ['live'], function() {
-	livereload.listen();
-
-	//watch for changes on transpired templates, css, and js files
-	gulp.watch(config.globs.watched, function(event) {
-		gulp.src(event.path)
-			.pipe(plumber({errorHandler: plumberErrorHandler}))
-			.pipe(livereload())
-			.pipe(notify({
-					title: config.siteName,
-					message: event.type + ': ' + event.path.replace(__dirname, '').replace(/\\/g, '/') + ' was reloaded'
-					//,sound: 'Pop'
-					, icon: icon
-				})
-			);
-	});
-});
