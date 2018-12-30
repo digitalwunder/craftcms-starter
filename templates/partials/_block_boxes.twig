@@ -1,0 +1,22 @@
+<div class="eg-boxes">
+  <div class="container">
+    <div class="row">
+      {% for box in block.box.all() %}
+        <div class="col">
+          <div class="box">
+            {% set image = box.bild.one() %}
+            {% if image %}
+              <img class="box-image" src="{{ image.getUrl('box') }}" alt="">
+            {% endif %}
+            <div class="box-text">{{ box.text|markdown }}</div>
+            <div class="buttons">
+              {% for btn in box.button %}
+                <a class="btn btn-primary" href="{{ btn.buttonUrl }}">{{ btn.buttonText }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

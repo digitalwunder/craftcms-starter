@@ -1,0 +1,10 @@
+{% extends '_layout' %}
+
+{% block main %}
+  {% for block in entry.modules.all() %}
+      {% include ('partials/_block_' ~ block.type.handle) %}
+      {% if block.type.handle == "image" %}
+          {% set lazyImage = true %}
+      {% endif %}
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,42 @@
+// Custom variable overrides
+$primary:       #48A5D8;
+$secondary:     #1D1D1B;
+$dark:          #1D1D1B;
+$gray:          #F7F7F7;
+
+// Font import
+@import url('https://fonts.googleapis.com/css?family=Exo:300,400,600');
+
+// Font overrides
+$font-family-sans-serif: "Exo", Helvetica, Arial, sans-serif;
+$font-size-base: 1.25rem;
+$line-height-base: 1.8;
+$font-weight-base: 300;
+
+$headings-font-weight: 600;
+
+// Navbar overrides
+$navbar-light-color: $dark;
+
+// Container
+$container-max-widths: ();
+$container-max-widths: map-merge(
+  (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1280px
+  ),
+  $container-max-widths
+);
+
+// Buttons / Forms
+
+$btn-border-radius: 0;
+
+// Bootstrap and its default variables
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "global";
+@import "header";
+@import "footer";
+@import "modules";

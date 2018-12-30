@@ -1,0 +1,25 @@
+.main-navigation {
+  .navbar-logo {
+    background-color: $primary;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    img {
+      width: 500px;
+    }
+  }
+  >.navbar {
+    .navbar-nav {
+      margin: 0 auto;
+      .nav-item {
+        text-transform: uppercase;
+        .nav-link {
+          padding: 10px 40px;
+        }
+        &.active {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
