@@ -1,7 +1,13 @@
+# General
 /.env
 /.idea
-/vendor
 .DS_Store
 
-#node files
-/node_modules/*
+# Node Files
+package-lock.json
+/node_modules
+
+
+# Composer Files
+composer.lock
+/vendor
