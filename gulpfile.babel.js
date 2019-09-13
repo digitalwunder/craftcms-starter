@@ -23,8 +23,7 @@ const files = {
 // Sass task: compiles the style.scss file into style.css
 function scssTask(){
     return src([
-          files.scssPath,
-          'node_modules/@fortawesome/fontawesome-free/css/all.css',
+          files.scssPath
         ])
         .pipe(sourcemaps.init()) // initialize sourcemaps first
         .pipe(sass()) // compile SCSS to CSS
@@ -38,8 +37,7 @@ function scssTask(){
 function jsTask(){
     return src([
           'node_modules/jquery/dist/jquery.js',
-          'node_modules/bootstrap/dist/js/bootstrap.js',
-          'node_modules/@fortawesome/fontawesome-free/js/all.js',
+          'node_modules/bootstrap/dist/js/bootstrap.js'
           files.jsPath,
           //,'!' + 'includes/js/jquery.min.js', // to exclude any specific files
         ])
