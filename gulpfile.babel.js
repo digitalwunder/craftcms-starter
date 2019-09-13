@@ -1,169 +1,88 @@
-// -------------------- Configuration Settings --------------------
-var config = {};
+// Gulp related
+import gulp, { src, dest, watch, series, parallel } from 'gulp';
+import sourcemaps from 'gulp-sourcemaps';
+import sass from 'gulp-sass';
+import concat from 'gulp-concat';
+import uglify from 'gulp-uglify';
+import postcss from 'gulp-postcss';
+import replace from 'gulp-replace';
 
-//basics
-config.siteName = 'Company';
-config.proxyDomain = 'site.local';
+// Tools
+import autoprefixer from 'autoprefixer';
+import dotenv from 'dotenv';
+import cssnano from 'cssnano';
+import browserSync from 'browser-sync';
+import 'dotenv/config';
 
-//source directory
-config.src = 'source/';
-
-//destinations
-config.dest = 'web/assets/';
-config.destJS = config.dest + 'js';
-config.destCSS = config.dest + 'styles';
-
-//globs
-config.globs = {
-	scss : config.src + 'scss/**/*.scss',
-	js : {
-		individual : config.src + 'js/individual/**/*.js',
-		combined : [
-			config.src + 'js/combined/libs/*.js',
-			config.src + 'js/combined/plugins/*.js',
-			config.src + 'js/combined/pluginSubs/*.js',
-			config.src + 'js/combined/site/*.js',
-			config.src + 'js/combined/site.js'
-		]
-	},
-	watched : [
-		config.src + 'craft/templates/**/*',
-		config.destJS + '/**/*.min.js',
-		config.destCSS + '/**/*.min.css'
-	]
-};
-
-//browser sync
-config.browserSync = {
-	files: config.globs.watched,
-	proxy: config.proxyDomain
-};
-
-// -------------------- Require Statements --------------------
-var gulp             = require('gulp'),
-	autoprefixer     = require('gulp-autoprefixer'),
-	concat           = require('gulp-concat'),
-	livereload       = require('gulp-livereload'),
-	browserSync      = require('browser-sync').create(),
-	newer            = require('gulp-newer'),
-	notify           = require('gulp-notify'),
-	plumber          = require('gulp-plumber'),
-	rename           = require('gulp-rename'),
-	sass             = require('gulp-sass'),
-	size             = require('gulp-size'),
-	uglify           = require('gulp-uglify'),
-	watch            = require('gulp-watch'),
-	path             = require('path'),
-	cssnano          = require('gulp-cssnano'),
-	sourcemaps       = require('gulp-sourcemaps'),
-	lazypipe         = require('lazypipe'),
-	fs               = require('fs');
-
-// -------------------- Notification Icon Detection --------------------
-/**
- * Checks to see if a file exists.
- *
- * @param filePath
- * @returns {*}
- */
-function fileExists(filePath)
-{
-	try {
-		return fs.statSync(filePath).isFile();
-	} catch (err) {
-		return false;
-	}
+// File paths
+const files = {
+    scssPath: 'source/scss/**/*.scss',
+    jsPath: 'source/js/**/*.js'
 }
 
-var iconPath = path.join(__dirname, 'gulp.png');
-var icon = fileExists( iconPath ) ? iconPath : null;
+// Sass task: compiles the style.scss file into style.css
+function scssTask(){
+    return src([
+          files.scssPath,
+          'node_modules/@fortawesome/fontawesome-free/css/all.css',
+        ])
+        .pipe(sourcemaps.init()) // initialize sourcemaps first
+        .pipe(sass()) // compile SCSS to CSS
+        .pipe(postcss([ autoprefixer(), cssnano() ])) // PostCSS plugins
+        .pipe(sourcemaps.write('.')) // write sourcemaps file in current directory
+        .pipe(dest('web/assets/css')
+    ); // put final CSS in dist folder
+}
 
-// -------------------- Plumber Error Handler --------------------
-var plumberErrorHandler = function(err) {
-	console.log( 'plumber error! "' + err.message + '"' );
-	notify.onError({
-		title: config.siteName,
-		message: "Error: <%= err.message %>",
-		sound: 'Pop'
+// JS task: concatenates and uglifies JS files to script.js
+function jsTask(){
+    return src([
+          'node_modules/jquery/dist/jquery.js',
+          'node_modules/bootstrap/dist/js/bootstrap.js',
+          'node_modules/@fortawesome/fontawesome-free/js/all.js',
+          files.jsPath,
+          //,'!' + 'includes/js/jquery.min.js', // to exclude any specific files
+        ])
+        .pipe(concat('scripts.js'))
+        .pipe(uglify())
+        .pipe(dest('web/assets/js')
+    );
+}
+
+// Cachebust
+var cbString = new Date().getTime();
+function cacheBustTask(){
+    return src(['templates/layout.twig'])
+        .pipe(replace(/cb=\d+/g, 'cb=' + cbString))
+        .pipe(dest('templates'));
+}
+
+// Watch task: watch SCSS and JS files for changes
+// If any change, run scss and js tasks simultaneously
+function watchTask(){
+    watch([files.scssPath, files.jsPath],
+        parallel(scssTask, jsTask));
+}
+
+// Starting Server
+function serve(done) {
+	browserSync.init({
+		proxy: process.env.DEFAULT_SITE_URL,
+		files: [
+			'templates/**/*.twig',
+			'web/assets/js/**/*.js',
+			'web/assets/css/**/*.css'
+		]
 	});
-	this.emit('end');
-};
+  done();
+}
 
-// -------------------- Processors --------------------
-//individual scripts (not combined)
-var jsIndividualScripts = lazypipe()
-	.pipe(plumber, {errorHandler: plumberErrorHandler})
-	.pipe(newer, { dest: config.destJS, ext: '.min.js' })
-	.pipe(gulp.dest, config.destJS)
-	.pipe(size, {showFiles: true})
-	.pipe(uglify)
-	.pipe(rename, { suffix: '.min' })
-	.pipe(gulp.dest, config.destJS)
-	.pipe(size, {showFiles: true});
-
-//combined scripts
-var jsCombinedScripts = lazypipe()
-	.pipe(plumber, {errorHandler: plumberErrorHandler})
-	.pipe(newer, config.dest + 'js/scripts.min.js')
-	.pipe(concat, 'scripts.js')
-	.pipe(gulp.dest, config.destJS)
-	.pipe(size, {showFiles: true})
-	.pipe(uglify)
-	.pipe(rename, { suffix: '.min' })
-	.pipe(gulp.dest, config.destJS)
-	.pipe(size, {showFiles: true});
-
-//scss compiling
-var scssProcessing = lazypipe()
-	.pipe(plumber, {errorHandler: plumberErrorHandler})
-	.pipe(sass, {outputStyle: ':compact'})
-	.pipe(autoprefixer, 'last 2 version')
-	.pipe(gulp.dest, config.destCSS)
-	.pipe(size, {showFiles: true})
-	.pipe(rename, { suffix: '.min' })
-	.pipe(sourcemaps.init)
-	.pipe(cssnano)
-	.pipe(sourcemaps.write, '.')
-	.pipe(gulp.dest, config.destCSS)
-	.pipe(size, {showFiles: true});
-
-// -------------------- Tasks --------------------
-//styles task
-gulp.task('styles', function() {
-	if ( browserSync.active ) {
-		return gulp.src(config.globs.scss)
-			.pipe(scssProcessing())
-			.pipe(browserSync.reload({stream:true}));
-	}
-	return gulp.src(config.globs.scss).pipe(scssProcessing());
-});
-
-//scripts individual task
-gulp.task('scripts-individual', function() {
-	return gulp.src(config.globs.js.individual).pipe(jsIndividualScripts());
-});
-
-//scripts combined task
-gulp.task('scripts-combined', function() {
-	return gulp.src(config.globs.js.combined).pipe(jsCombinedScripts());
-});
-
-//watch task
-gulp.task('live', function() {
-	//watch all .scss files
-	gulp.watch(config.globs.scss, ['styles']);
-
-	//watch each individual .js file
-	watch(config.globs.js.individual).pipe(jsIndividualScripts());
-
-	//watch all combined .js files
-	gulp.watch(config.globs.js.combined, ['scripts-combined']);
-});
-
-//default task - one time styles and scripts
-gulp.task('default', ['styles', 'scripts-individual', 'scripts-combined']);
-
-//start browser-sync server
-gulp.task('serve-bs', ['live'], function() {
-	browserSync.init(config.browserSync)
-});
+// Export the default Gulp task so it can be run
+// Runs the scss and js tasks simultaneously
+// then runs cacheBust, then watch task
+exports.default = series(
+	serve,
+	parallel(scssTask, jsTask),
+	cacheBustTask,
+	watchTask
+);
