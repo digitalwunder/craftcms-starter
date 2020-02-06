@@ -37,7 +37,7 @@ function scssTask(){
 function jsTask(){
     return src([
           'node_modules/jquery/dist/jquery.js',
-          'node_modules/bootstrap/dist/js/bootstrap.js'
+          'node_modules/bootstrap/dist/js/bootstrap.js',
           files.jsPath,
           //,'!' + 'includes/js/jquery.min.js', // to exclude any specific files
         ])
