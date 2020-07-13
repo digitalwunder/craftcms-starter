@@ -1,0 +1,15 @@
+{% extends '_layouts/base' %}
+
+{% block layout %}
+  <header class="d-header">
+    {% include '_components/header' %}
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="d-footer">
+    {% include '_components/footer' %}
+  </footer>
+{% endblock %}

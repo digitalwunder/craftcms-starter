@@ -1,0 +1,5 @@
+{% if blocks is defined and blocks %}
+  {% for block in blocks %}
+    {% include ('_components/block_' ~ block.type.handle) %}
+  {% endfor %}
+{% endif %}

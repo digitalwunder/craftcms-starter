@@ -1,0 +1,7 @@
+{% block head %}
+  {% do view.registerCssFile(alias('@web')~'/'~'assets/css/styles.css?cb=1594475547745') %}
+{% endblock %}
+
+{% block endBody %}
+  {% do view.registerJsFile(alias('@web')~'/'~'assets/js/scripts.js?cb=1594475547745') %}
+{% endblock %}

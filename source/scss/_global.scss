@@ -1,0 +1,29 @@
+body {
+
+}
+
+h1 {
+  // font-size: 5rem;
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+h4 {
+
+}
+
+h5 {
+
+}
+
+p {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

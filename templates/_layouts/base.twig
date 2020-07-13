@@ -1,0 +1,38 @@
+{% set imageBig = {
+    mode: 'crop',
+    width: 1920,
+    height: 1080,
+    quality: 85,
+    position: 'center-center'
+} %}
+
+{% set imageSmall = {
+    mode: 'crop',
+    width: 960,
+    height: 720,
+    quality: 85,
+    position: 'center-center'
+} %}
+
+<!DOCTYPE HTML>
+<html lang="{{ currentSite.language }}" dir="{{craft.app.i18n.getLocaleById(currentSite.id).getOrientation()}}">
+<head>
+  {# {% include '_system/seo' %} #}
+  {% include '_system/meta' %}
+  {% include '_system/favicons' %}
+  {% include '_system/static' %}
+  {# {% include '_system/fonts' %}
+
+  {% include '_system/tag_manager' %} #}
+  {% block head %}{% endblock %}
+</head>
+
+<body class="{{body_class ?? null}} {{craft.app.request.isMobileBrowser() ? 'is-mobile' : 'is-desktop'}}">
+
+  {# {% include '_components/quick_edit' %} #}
+  {% block layout %}{% endblock %}
+
+  {% block endBody %}{% endblock %}
+
+</body>
+</html>

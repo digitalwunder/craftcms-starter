@@ -1,0 +1,36 @@
+/*
+Find all variables here: https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss
+*/
+
+// Font
+@import url('https://fonts.googleapis.com/css?family=Exo:300,400,600');
+
+// Brand colors
+$brand-primary: #000;
+$brand-secondary: #ff0;
+
+/*
+Bootstrap overrides
+*/
+
+// Colors
+$primary: $brand-primary;
+$secondary: $brand-secondary;
+
+// Font
+$font-family-sans-serif: "Exo", Helvetica, Arial, sans-serif;
+$font-size-base: 1.25rem;
+$line-height-base: 1.8;
+$font-weight-base: 300;
+
+// Container
+$container-max-widths: ();
+$container-max-widths: map-merge(
+  (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1280px
+  ),
+  $container-max-widths
+);

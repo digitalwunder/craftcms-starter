@@ -25,6 +25,9 @@ return [
 
         // The secure key Craft will use for hashing and encrypting data
         'securityKey' => getenv('SECURITY_KEY'),
+
+        // Multi Enviorment Project Config
+        'useProjectConfigFile' => true
     ],
 
     // Dev environment settings

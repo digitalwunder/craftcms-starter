@@ -3,7 +3,7 @@
 # Example .gitignore file for Craft CMS projects
 #
 # @author    digitalwunder.io
-# @copyright Copyright (c) 2019 igitalwunder.io
+# @copyright Copyright (c) 2020 igitalwunder.io
 # @link      https://digitalwunder.io/
 # @package   craftcms-starter
 # @since     1.0.0
@@ -22,16 +22,17 @@
 /storage/*
 
 # ASSETS
-/public/assets/*
-/web/assets/*
+/web/assets/css
+/web/assets/js
+/web/assets/images
 
 # IMAGER TRANSFORMS
 /public/imager/*
 /web/imager/*
 
 # BUILD FILES
-/bower_components/*
-/node_modules/*
+/bower_components
+/node_modules
 /build/*
 /yarn-error.log
 

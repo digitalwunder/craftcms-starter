@@ -1,0 +1,10 @@
+{% if link is defined and not link.isEmpty() %}
+  <a
+    class="{% if class is defined %}{{class}}{% endif %}"
+    href="{{link.getUrl()}}" {{link.getLinkAttributes()}}
+  >
+    {{link.getCustomText()}}
+
+    {% if class is defined and 'btn' in class %}&nbsp;➔{% endif %}
+  </a>
+{% endif %}
