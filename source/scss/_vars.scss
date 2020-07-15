@@ -3,11 +3,12 @@ Find all variables here: https://github.com/twbs/bootstrap-sass/blob/master/asse
 */
 
 // Font
-@import url('https://fonts.googleapis.com/css?family=Exo:300,400,600');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&family=Overpass:wght@300&display=swap');
 
 // Brand colors
 $brand-primary: #000;
 $brand-secondary: #ff0;
+$brand-dark: #2A292D;
 
 /*
 Bootstrap overrides
@@ -16,12 +17,20 @@ Bootstrap overrides
 // Colors
 $primary: $brand-primary;
 $secondary: $brand-secondary;
+$dark: $brand-dark;
 
 // Font
-$font-family-sans-serif: "Exo", Helvetica, Arial, sans-serif;
+$font-family-sans-serif: "Overpass", Helvetica, Arial, sans-serif;
 $font-size-base: 1.25rem;
-$line-height-base: 1.8;
+$line-height-base: 1.6;
 $font-weight-base: 300;
+
+// Heading
+$headings-font-family: "Montserrat", Helvetica, Arial, sans-serif;
+$headings-font-weight: 300;
+
+// Buttons
+$btn-border-radius-base: 13px;
 
 // Container
 $container-max-widths: ();
@@ -30,7 +39,7 @@ $container-max-widths: map-merge(
     sm: 540px,
     md: 720px,
     lg: 960px,
-    xl: 1280px
+    xl: 1320px
   ),
   $container-max-widths
 );

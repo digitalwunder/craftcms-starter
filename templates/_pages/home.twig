@@ -1,13 +1,33 @@
 {% extends '_layouts/layout_main' %}
 
 {% block content %}
-  <section class="d-text my-5">
-    <div class="container">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint</p>
+  <section class="af-home-intro">
+    <div class="af-home-intro_background">
+      <div class="row">
+        <div class="col-lg-7">
+          <img src="{{entry.homeIntro.image.one().getUrl()}}" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="af-home-intro_content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 offset-lg-5">
+            <div class="af-home-intro_content-inner">
+              <h1>
+                {{entry.homeIntro.headlineTop}}
+                <strong>{{entry.homeIntro.headlineBottom}}</strong>
+              </h1>
+              {{entry.homeIntro.text}}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  {# <section class="d-modules">
-    {% include '_atoms/module-wrapper' with {blocks: entry.modules.all()} %}
-  </section> #}
+  <section class="af-module-wrapper">
+    {% include '_atoms/module-wrapper' with {blocks: entry.homeModules.all()} %}
+  </section>
+
 {% endblock %}

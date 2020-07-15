@@ -1,24 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+{% set element = (category ?? entry ?? null) %}
+{% set lang = craft.app.locale %}
+
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
-    <a class="navbar-brand" href="#">Navbar w/ text</a>
+
+    <a class="navbar-brand" href="/">
+      <img src="/assets/ui/logo.svg" alt="Ape Factory">
+    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+      <ul class="af-header_navbar navbar-nav ml-auto">
+        {% for link in interface.headerNav.all() %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{link.item}}">{{link.item.getCustomText()}}</a>
+          </li>
+        {% endfor %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle btn btn-outline-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{siteName}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ siteSwitcher('german', element) }}">Deutsch</a>
+            <a class="dropdown-item" href="{{ siteSwitcher('english', element) }}">English</a>
+            <a class="dropdown-item" href="{{ siteSwitcher('french', element) }}">Français</a>
+          </div>
         </li>
       </ul>
-      <span class="navbar-text">
-        Navbar text with an inline element
-      </span>
     </div>
   </div>
 </nav>

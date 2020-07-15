@@ -1,0 +1,100 @@
+{% extends '_layouts/layout_main' %}
+
+{% set pageParam = craft.app.request.absoluteUrl %}
+{% set lang = craft.app.language %}
+{% set blogItems = craft.entries()
+    .section('blog')
+    .orderBy('dateCreated desc')
+    .limit(6) %}
+
+{% paginate blogItems as pageInfo, entries %}
+
+{% if '/p' not in pageParam %}
+  {% redirect "/de/blog/p1" %}
+{% endif %}
+
+{% set blogPreview = {
+    mode: 'crop',
+    width: 400,
+    height: 200,
+    quality: 80,
+    position: 'center-center'
+} %}
+
+{% block content %}
+  <section class="af-blogroll-intro">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3 text-center">
+          <h1>
+            {{entry.blogroll.headlineTop}}
+            <strong>{{entry.blogroll.headlineBottom}}</strong>
+          </h1>
+          <div class="af-blogroll-intro_content-text">
+            {{entry.blogroll.text}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="af-blogroll-teaser">
+    <div class="af-blogroll-teaser_background">
+      <div class="row">
+        <div class="col-lg-7">
+          {% include '_atoms/image' with {image: entry.blogroll.teaserImage} %}
+        </div>
+      </div>
+    </div>
+    <div class="af-blogroll-teaser_content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 offset-lg-5">
+            <div class="af-blogroll-teaser_content-inner">
+              <h2>
+                {{entry.blogroll.teaserHeadline}}
+              </h2>
+              {{entry.blogroll.teaserText}}
+              <div class="af-blogroll-teaser_content-button">
+                {% include '_atoms/link' with {link: entry.blogroll.teaserButton, class: 'btn btn-outline-dark'} %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="af-blogroll-roll">
+    <div class="container">
+      <div class="row">
+        {% for item in entries %}
+          <div class="blog-item col-md-4 mb-4">
+            <div class="card border-0 shadow-sm">
+              {% include '_atoms/image' with {image: item.blogDetail.image, size: blogPreview} %}
+              <div class="card-body">
+                <article>
+                  <h4 class="mb-2">{{ item.blogDetail.headline }}</h4>
+                  <p class="mb-2">{{item.blogDetail.description}}</p>
+                  <a class="btn btn-primary" href="{{ item.url }}">Mehr dazu</a>
+                </article>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item {% if not pageInfo.prevUrl %}disabled{% endif %}"><a class="page-link" href="{{ pageInfo.prevUrl }}">Vorherige Seite</a></li>
+              {% for i in range(1,pageInfo.totalPages) %}
+                <li class="page-item {% if pageInfo.currentPage == loop.index %}active{% endif %}"><a class="page-link" href="/blog/p{{loop.index}}">{{loop.index}}</a></li>
+              {% endfor %}
+              <li class="page-item {% if not pageInfo.nextUrl %}disabled{% endif %}"><a class="page-link" href="{{ pageInfo.nextUrl }}">Nächste Seite</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

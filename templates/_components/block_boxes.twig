@@ -1,22 +1,62 @@
-<div class="boxes">
-  <div class="container">
-    <div class="row">
-      {% for box in block.box.all() %}
-        <div class="col">
-          <div class="box">
-            {% set image = box.bild.one() %}
-            {% if image %}
-              <img class="box-image" src="{{ image.getUrl('box') }}" alt="">
-            {% endif %}
-            <div class="box-text">{{ box.text|markdown }}</div>
-            <div class="buttons">
-              {% for btn in box.button %}
-                <a class="btn btn-primary" href="{{ btn.buttonUrl }}">{{ btn.buttonText }}</a>
-              {% endfor %}
+{% if block.style == "standard" %}
+  <section class="af-boxes">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5 offset-lg-1">
+          <h2>
+            {{block.headlineTop}}
+            <strong>{{block.headlineBottom}}</strong>
+          </h2>
+        </div>
+        <div class="col-lg-5 offset-lg-1">
+          {{block.text}}
+        </div>
+      </div>
+      <div class="row">
+        {% for item in block.items.all() %}
+          <div class="col-lg-6">
+            <div class="af-boxes_item">
+              <div class="row">
+                <div class="col-3">
+                  {% include '_atoms/image' with {image: item.icon} %}
+                </div>
+                <div class="col-9">
+                  <h4>{{item.headline}}</h4>
+                </div>
+              </div>
+              <div class="af-boxes_text">
+                {{item.text}}
+              </div>
             </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
-  </div>
-</div>
+  </section>
+{% else %}
+  <section class="af-boxes dark">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 offset-lg-3 text-center">
+          <h2><strong>{{block.headlineBottom}}</strong></h2>
+          {{block.text}}
+        </div>
+      </div>
+      <div class="row">
+        {% for item in block.items.all() %}
+          <div class="col-lg-4">
+            <div class="af-boxes_item">
+              <h4>{{item.headline}}</h4>
+              <div class="af-boxes_text">
+                {{item.text}}
+              </div>
+              <div class="af-boxes_link">
+                {% include '_atoms/link' with {link: item.button, class: 'btn btn-primary'} %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}

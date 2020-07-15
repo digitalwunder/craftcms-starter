@@ -1,0 +1,7 @@
+{% extends '_layouts/layout_main' %}
+
+{% block content %}
+  <section class="af-module-wrapper">
+    {% include '_atoms/module-wrapper' with {blocks: entry.generalModules.all()} %}
+  </section>
+{% endblock %}

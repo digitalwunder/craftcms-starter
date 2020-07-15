@@ -1,6 +1,11 @@
-{% if image is defined and image.one() %}
+{% if image is defined and image and image.one() %}
   <img
     class="w-100 {% if class is defined %}{{class}}{% endif %}"
-    src="{{image.one().getUrl(size)}}"
+    {% if size is defined %}
+      src="{{image.one().getUrl(size)}}"
+    {% else %}
+      src="{{image.one().getUrl()}}"
+    {% endif %}
+
     alt="{{image.one().title}}">
 {% endif %}

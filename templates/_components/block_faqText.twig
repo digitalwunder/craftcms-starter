@@ -1,0 +1,40 @@
+<section class="af-faq-text">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 offset-lg-1">
+        <h2>
+          {{block.headlineTop}}
+          <strong>{{block.headlineBottom}}</strong>
+        </h2>
+        {% for item in block.textRows %}
+          <div class="af-faq-text_textRow">
+            <h4>{{item.headline}}</h4>
+            {{item.text}}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="col-lg-4 offset-lg-1">
+        <h4>{{block.faqHeadline}}</h4>
+        <div class="accordion" id="accordionExample">
+
+          {% for item in block.faq %}
+            <div class="card">
+              <div class="card-header" id="heading{{item.id}}">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{item.id}}" aria-expanded="true" aria-controls="collapse{{item.id}}">
+                  {{item.headline}}
+                </button>
+              </div>
+
+              <div id="collapse{{item.id}}" class="collapse {% if loop.first %}show{% endif %}" aria-labelledby="heading{{item.id}}" data-parent="#accordionExample">
+                <div class="card-body">
+                  {{item.text}}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

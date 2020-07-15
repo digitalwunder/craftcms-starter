@@ -1,0 +1,13 @@
+<section class="af-logo-row">
+  <div class="container">
+    <div class="row">
+      {% for item in block.items.all() %}
+        <div class="col">
+          <a href="{{item.link}}">
+            {% include '_atoms/image' with {image: item.logo} %}
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

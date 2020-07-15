@@ -1,0 +1,45 @@
+{% extends '_layouts/layout_main' %}
+
+{% set blogImage = {
+    mode: 'crop',
+    width: 1280,
+    height: 400,
+    quality: 80,
+    position: 'center-center'
+} %}
+
+{% block content %}
+  <section class="af-blog-detail">
+    <div class="container">
+      <div class="row af-blog-detail_image">
+        <div class="col-md-12">
+          {% include '_atoms/image' with {image: entry.blogDetail.image, size: blogImage} %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-1 offset-md-1 mt-2 mb-2 social-icons">
+          <div class="row no-gutters">
+            <div class="col-2 col-md-12">
+              <a class="social-icon fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ craft.app.request.absoluteUrl }}"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <div class="col-2 col-md-12">
+              <a class="social-icon twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ craft.app.request.absoluteUrl }}"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="col-2 col-md-12">
+              <a class="social-icon linkedin" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{ craft.app.request.absoluteUrl }}"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="col-2 col-md-12">
+              <a class="social-icon xing" target="_blank" href="https://www.xing.com/spi/shares/new?url={{ craft.app.request.absoluteUrl }}"><i class="fab fa-xing"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <h1>{{entry.blogDetail.headline}}</h1>
+          <div class="af-blog-detail_content-text">
+            {{entry.blogDetail.contentText}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

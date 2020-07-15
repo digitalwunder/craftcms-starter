@@ -21,7 +21,7 @@ const files = {
 }
 
 // Sass task: compiles the style.scss file into style.css
-function scssTask(){
+function scssTask() {
     return src([
           files.scssPath
         ])
@@ -34,7 +34,7 @@ function scssTask(){
 }
 
 // JS task: concatenates and uglifies JS files to script.js
-function jsTask(){
+function jsTask() {
     return src([
           'node_modules/jquery/dist/jquery.js',
           'node_modules/bootstrap/dist/js/bootstrap.js',
@@ -50,9 +50,9 @@ function jsTask(){
 // Cachebust
 var cbString = new Date().getTime();
 function cacheBustTask(){
-    return src(['templates/layout.twig'])
+    return src(['templates/_system/static.twig'])
         .pipe(replace(/cb=\d+/g, 'cb=' + cbString))
-        .pipe(dest('templates'));
+        .pipe(dest('templates/_system'));
 }
 
 // Watch task: watch SCSS and JS files for changes

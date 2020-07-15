@@ -1,5 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteRule ^$ /de/ [R=301,L]
 
     # Send would-be 404 requests to Craft
     RewriteCond %{REQUEST_FILENAME} !-f

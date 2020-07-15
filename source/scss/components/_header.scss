@@ -1,3 +1,22 @@
-.d-header {
-
+.af-header {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  .af-header_navbar {
+    .nav-item {
+      .nav-link {
+        font-size: 1.125rem;
+        line-height: 2.5rem;
+        color: $dark;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 2.375rem;
+        padding-right: 2.375rem;
+        &.btn-outline-dark {
+          border-radius: 13px;
+          padding-left: 1.25rem;
+          padding-right: 1.25rem;
+        }
+      }
+    }
+  }
 }
