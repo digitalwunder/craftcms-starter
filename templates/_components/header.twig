@@ -1,6 +1,3 @@
-{% set element = (category ?? entry ?? null) %}
-{% set lang = craft.app.locale %}
-
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
 
@@ -19,16 +16,6 @@
             <a class="nav-link" href="{{link.item}}">{{link.item.getCustomText()}}</a>
           </li>
         {% endfor %}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle btn btn-outline-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{siteName}}
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ siteSwitcher('german', element) }}">Deutsch</a>
-            <a class="dropdown-item" href="{{ siteSwitcher('english', element) }}">English</a>
-            <a class="dropdown-item" href="{{ siteSwitcher('french', element) }}">Français</a>
-          </div>
-        </li>
       </ul>
     </div>
   </div>

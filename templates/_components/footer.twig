@@ -1,66 +1,9 @@
-<section class="af-footer_top">
-  <div class="container">
-    <div class="row no-gutters">
-      <div class="af-footer_top-links col-lg-2">
-        <h5>{{interface.headingNavLeft}}</h5>
-        <ul class="list-unstyled">
-          {% for link in interface.footerBottomNavLeft.all() %}
-            <li><a href="{{link.item}}">{{link.item.getCustomText()}}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="af-footer_top-links col-lg-4">
-        <h5>{{interface.headingNavRight}}</h5>
-        <div class="row">
-          <div class="col-lg-6">
-            <ul class="list-unstyled">
-              {% for link in interface.footerBottomNavRight.all()|slice(0, 5) %}
-                <li><a href="{{link.item}}">{{link.item.getCustomText()}}</a></li>
-              {% endfor %}
-            </ul>
-          </div>
-          <div class="col-lg-6">
-            <ul class="list-unstyled">
-              {% for link in interface.footerBottomNavRight.all()|slice(5, 20) %}
-                <li><a href="{{link.item}}">{{link.item.getCustomText()}}</a></li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 offset-lg-3">
-        <div class="df-footer_top-social">
-          <div class="row">
-            <div class="col">
-              <a href="#"><i class="fas fa-camera"></i></a>
-            </div>
-            <div class="col">
-              <a href="#"><i class="fas fa-camera"></i></a>
-            </div>
-            <div class="col">
-              <a href="#"><i class="fas fa-camera"></i></a>
-            </div>
-            <div class="col">
-              <a href="#"><i class="fas fa-camera"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="df-footer_top-phone">
-          <p>DE TEL: 0049. 1516546578765</p>
-          <p>FR TEL: 0049. 1516546578765</p>
-          <p>MAIL: hi@apefactory.com</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="af-footer_bottom">
   <div class="container">
     <div class="af-footer_bottom-inner border-top">
       <div class="row">
         <div class="col-12 col-lg-6">
-          <p class="mb-0">2020 - ape factory</p>
+          <p class="mb-0">2020 - Craft CMS Starter</p>
         </div>
         <div class="col-12 col-lg-6 text-right">
           <ul class="list-inline mb-0">
@@ -74,6 +17,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>

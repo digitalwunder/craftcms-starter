@@ -1,0 +1,22 @@
+dateModified: 1599553931
+email:
+  fromEmail: hi@digitalwunder.io
+  fromName: 'Ape Factory'
+  transportType: craft\mail\transportadapters\Sendmail
+graphql:
+  publicToken:
+    enabled: false
+    expiryDate: null
+system:
+  edition: solo
+  live: true
+  name: 'Craft CMS Starter'
+  retryDuration: null
+  schemaVersion: 3.5.13
+  timeZone: Europe/Berlin
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: ''
+  photoVolumeUid: null
+  requireEmailVerification: true

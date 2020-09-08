@@ -1,0 +1,120 @@
+field: 8d52ff4e-2bf4-45b6-bfd5-12f1a1c9eaff
+fieldLayouts:
+  72ad844a-1262-4656-8c69-884171ce393b:
+    tabs:
+      -
+        fields:
+          0a9bc05b-2723-4a41-8907-7db3a9f0577d:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  0a9bc05b-2723-4a41-8907-7db3a9f0577d:
+    contentColumnType: text
+    fieldGroup: null
+    handle: item
+    instructions: ''
+    name: Item
+    searchable: true
+    settings:
+      allowCustomText: '1'
+      allowTarget: ''
+      allowedLinkNames: '*'
+      autoNoReferrer: ''
+      defaultLinkName: entry
+      defaultText: ''
+      enableAriaLabel: ''
+      enableTitle: ''
+      typeSettings:
+        __assoc__:
+          -
+            - asset
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+                -
+                  - allowCustomQuery
+                  - ''
+          -
+            - user
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+                -
+                  - allowCustomQuery
+                  - ''
+          -
+            - entry
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+                -
+                  - allowCustomQuery
+                  - ''
+          -
+            - category
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+                -
+                  - allowCustomQuery
+                  - ''
+          -
+            - site
+            -
+              __assoc__:
+                -
+                  - sites
+                  - '*'
+          -
+            - custom
+            -
+              __assoc__:
+                -
+                  - disableValidation
+                  - ''
+                -
+                  - allowAliases
+                  - ''
+          -
+            - email
+            -
+              __assoc__:
+                -
+                  - disableValidation
+                  - ''
+                -
+                  - allowAliases
+                  - ''
+          -
+            - tel
+            -
+              __assoc__:
+                -
+                  - disableValidation
+                  - ''
+                -
+                  - allowAliases
+                  - ''
+          -
+            - url
+            -
+              __assoc__:
+                -
+                  - disableValidation
+                  - ''
+                -
+                  - allowAliases
+                  - ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: typedlinkfield\fields\LinkField

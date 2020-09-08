@@ -1,0 +1,9 @@
+baseUrl: '@web'
+enabled: true
+handle: default
+hasUrls: true
+language: de
+name: 'Craft CMS Starter'
+primary: true
+siteGroup: 10f6c955-b7bf-46d7-be91-a577f70ed105
+sortOrder: 1

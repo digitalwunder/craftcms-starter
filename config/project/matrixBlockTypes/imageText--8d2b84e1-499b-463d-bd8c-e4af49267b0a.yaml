@@ -1,0 +1,121 @@
+field: 75fae3a2-537e-444b-9ee9-09a7a8dd6cb6
+fieldLayouts:
+  6351bfb9-a780-4fbb-9421-00d58da5c55f:
+    tabs:
+      -
+        fields:
+          226c07f0-7ca9-479c-b16f-6d5fbea235b8:
+            required: false
+            sortOrder: 4
+          6561b24e-7a92-4cb3-9f47-603cdbdc8a6a:
+            required: false
+            sortOrder: 3
+          b124bbfd-59a6-411c-a4c3-e3181a366700:
+            required: false
+            sortOrder: 1
+          f9a79c90-3ccd-4a5e-94ad-851dcf1e6bca:
+            required: false
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  226c07f0-7ca9-479c-b16f-6d5fbea235b8:
+    contentColumnType: string
+    fieldGroup: null
+    handle: list
+    instructions: ''
+    name: List
+    searchable: true
+    settings:
+      columns:
+        __assoc__:
+          -
+            - b90cd9fb-fc1e-44b0-873a-cebb65230142
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_9_list}}'
+      fieldLayout: table
+      maxRows: ''
+      minRows: ''
+      propagationMethod: all
+      selectionLabel: ''
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+  6561b24e-7a92-4cb3-9f47-603cdbdc8a6a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: text
+    instructions: ''
+    name: Text
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: ''
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  b124bbfd-59a6-411c-a4c3-e3181a366700:
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: ''
+    name: Image
+    searchable: true
+    settings:
+      allowSelfRelations: ''
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:89e317dc-643d-49e4-a730-f8ce114a6644'
+      defaultUploadLocationSubpath: ''
+      limit: ''
+      localizeRelations: ''
+      restrictFiles: ''
+      selectionLabel: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:89e317dc-643d-49e4-a730-f8ce114a6644'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  f9a79c90-3ccd-4a5e-94ad-851dcf1e6bca:
+    contentColumnType: text
+    fieldGroup: null
+    handle: headline
+    instructions: ''
+    name: Headline
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: imageText
+name: 'Image Text'
+sortOrder: 6

@@ -1,0 +1,152 @@
+field: 3c6d2ed7-448f-4283-a125-a3b2c50cbc83
+fieldLayouts:
+  894d0bbe-f3a0-4b7d-8cb8-5d1b5cd93f5a:
+    tabs:
+      -
+        fields:
+          1236f3dd-d523-4dc2-ad17-e91f54e62e13:
+            required: false
+            sortOrder: 2
+          6328a935-566b-4688-896e-1b68ac0381dc:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  1236f3dd-d523-4dc2-ad17-e91f54e62e13:
+    contentColumnType: text
+    fieldGroup: null
+    handle: linkUrl
+    instructions: ''
+    name: Link
+    searchable: true
+    settings:
+      allowCustomText: ''
+      allowTarget: ''
+      allowedLinkNames: '*'
+      autoNoReferrer: ''
+      defaultLinkName: url
+      defaultText: ''
+      enableAriaLabel: ''
+      enableTitle: ''
+      typeSettings:
+        __assoc__:
+          -
+            - asset
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+                -
+                  - allowCustomQuery
+                  - ''
+          -
+            - user
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+                -
+                  - allowCustomQuery
+                  - ''
+          -
+            - entry
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+                -
+                  - allowCustomQuery
+                  - ''
+          -
+            - category
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+                -
+                  - allowCustomQuery
+                  - ''
+          -
+            - site
+            -
+              __assoc__:
+                -
+                  - sites
+                  - '*'
+          -
+            - custom
+            -
+              __assoc__:
+                -
+                  - disableValidation
+                  - ''
+                -
+                  - allowAliases
+                  - ''
+          -
+            - email
+            -
+              __assoc__:
+                -
+                  - disableValidation
+                  - ''
+                -
+                  - allowAliases
+                  - ''
+          -
+            - tel
+            -
+              __assoc__:
+                -
+                  - disableValidation
+                  - ''
+                -
+                  - allowAliases
+                  - ''
+          -
+            - url
+            -
+              __assoc__:
+                -
+                  - disableValidation
+                  - ''
+                -
+                  - allowAliases
+                  - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: typedlinkfield\fields\LinkField
+  6328a935-566b-4688-896e-1b68ac0381dc:
+    contentColumnType: string
+    fieldGroup: null
+    handle: logo
+    instructions: ''
+    name: Logo
+    searchable: true
+    settings:
+      allowSelfRelations: ''
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:89e317dc-643d-49e4-a730-f8ce114a6644'
+      defaultUploadLocationSubpath: ''
+      limit: ''
+      localizeRelations: ''
+      restrictFiles: ''
+      selectionLabel: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:89e317dc-643d-49e4-a730-f8ce114a6644'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets

@@ -1,0 +1,117 @@
+field: 75fae3a2-537e-444b-9ee9-09a7a8dd6cb6
+fieldLayouts:
+  4990f03d-2224-4849-9485-1d8074b5f1e8:
+    tabs:
+      -
+        fields:
+          144b29b2-a5e8-4457-9c2b-f2b2820315cf:
+            required: false
+            sortOrder: 2
+          bd49de34-2d8e-4d3c-909d-0ab82678e085:
+            required: false
+            sortOrder: 1
+          ddcfcb7c-6a65-4cd9-b162-9f22cb4ed2dd:
+            required: false
+            sortOrder: 3
+        name: Content
+        sortOrder: 1
+fields:
+  144b29b2-a5e8-4457-9c2b-f2b2820315cf:
+    contentColumnType: text
+    fieldGroup: null
+    handle: text
+    instructions: ''
+    name: Text
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: ''
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  bd49de34-2d8e-4d3c-909d-0ab82678e085:
+    contentColumnType: text
+    fieldGroup: null
+    handle: headline
+    instructions: ''
+    name: Headline
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  ddcfcb7c-6a65-4cd9-b162-9f22cb4ed2dd:
+    contentColumnType: string
+    fieldGroup: null
+    handle: tabs
+    instructions: ''
+    name: Tabs
+    searchable: true
+    settings:
+      columns:
+        __assoc__:
+          -
+            - 0cff0c74-1980-4e7e-b3c6-9e4bfc879d12
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 3cfb52a7-63bb-4666-8f85-191ec5e579dc
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - d83e69f3-afc6-4209-b523-6bff04a54fa6
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 15b8ba8b-54f8-4363-bc6b-27f6b60aea86
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - a6fe0c9e-29b9-454e-b67c-23aa50f119b0
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_10_tabs}}'
+      fieldLayout: row
+      maxRows: ''
+      minRows: ''
+      propagationMethod: all
+      selectionLabel: ''
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+handle: tabs
+name: Tabs
+sortOrder: 5
